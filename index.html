@@ -1,0 +1,981 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="Bekir Sahin, Ph.D. — Supply Chain Management, Operations, Business Analytics, and Information Systems." name="description"/>
+<title>Bekir Sahin, Ph.D.</title>
+<style>
+:root{
+  --bg:#ffffff;
+  --text:#111827;
+  --muted:#6b7280;
+  --border:#e5e7eb;
+  --soft:#f9fafb;
+  --accent:#111827;
+  --radius:14px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+  line-height:1.55;
+}
+a{color:var(--accent); text-underline-offset:2px}
+.container{max-width:980px;margin:0 auto;padding:24px}
+.hero{
+  padding:28px 24px 18px;
+  border-bottom:1px solid var(--border);
+  background:var(--bg);
+}
+.hero-top{
+  max-width:980px;margin:0 auto;display:flex;gap:18px;align-items:flex-start;justify-content:space-between;padding:0 0 0;
+}
+h1{margin:0;font-size:32px;letter-spacing:-0.02em}
+.subtitle{color:var(--muted);margin-top:6px}
+.pillline{margin-top:10px;color:var(--muted);font-size:clamp(11px,2.8vw,14px);white-space:nowrap;overflow-x:auto;overflow-y:hidden;text-overflow:clip;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.nowrap{white-space:nowrap}
+.pillline::-webkit-scrollbar{display:none}
+nav{
+  position:sticky;top:0;z-index:100;
+  background:rgba(255,255,255,0.92); backdrop-filter: blur(8px);
+  border-bottom:1px solid var(--border);
+}
+.nav-inner{
+  max-width:980px;margin:0 auto;padding:8px 12px;
+  display:flex;gap:10px;flex-wrap:nowrap;align-items:center;
+  overflow-x:auto; -webkit-overflow-scrolling: touch; white-space:nowrap;
+}
+.nav-inner::-webkit-scrollbar{display:none}
+.nav-inner{scrollbar-width:none}
+
+.nav-inner a{
+  font-size:13px;color:var(--muted);text-decoration:none;
+  padding:5px 8px;border-radius:999px;
+}
+
+
+.nav-home{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:30px;height:30px;border-radius:999px;
+  border:1px solid var(--border);
+  background:#fff;color:var(--muted);
+}
+
+.nav-home:hover{ color:var(--text); background:var(--soft); }
+.nav-inner a:hover{background:var(--soft);color:var(--text)}
+.nav-inner a.active{background:var(--soft);color:var(--text);border:1px solid var(--border)}
+.nav-inner a.wrap{white-space:normal}
+.nav-inner a.shrink{font-size:13px}
+
+@media (max-width:980px){
+  nav{overflow:visible}
+  .nav-inner{
+    display:grid;
+    grid-template-columns:repeat(4,minmax(0,1fr));
+    gap:10px;
+    align-items:center;
+    overflow:visible;
+    padding:12px 12px
+  }
+  .nav-inner a{
+    justify-content:center;
+    padding:10px 6px;
+    font-size:12px;
+    line-height:1.15;
+    white-space:nowrap;
+    word-break:normal;
+    overflow-wrap:normal;
+    hyphens:none
+  }
+  .nav-inner a.wrap{white-space:normal}
+  .nav-inner a.nav-home{
+    width:44px;
+    justify-self:start;
+    justify-content:center
+  }
+
+  .nav-inner a.wrap{white-space:normal; line-height:1.1; padding:8px 8px;}
+  .nav-inner a.shrink{font-size:12.5px; padding:8px 6px;}
+}
+@media (max-width:420px){
+  .nav-inner{gap:8px;padding:10px 10px}
+  .nav-inner a{font-size:11px;padding:9px 5px}
+
+  .nav-inner a.shrink{font-size:12px; padding:8px 5px;}
+}
+
+section{padding:18px 0}
+h2{margin:0 0 10px;font-size:20px;letter-spacing:-0.01em}
+.lead{font-size:16px;margin:0;color:var(--text)}
+.grid2{display:grid;grid-template-columns:1fr;gap:14px}
+@media (min-width:860px){.grid2{grid-template-columns:1.25fr 0.75fr}}
+.label{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:8px 0}
+.stack{display:flex;flex-direction:column;gap:12px}
+.card{
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  background:var(--bg);
+  padding:12px 14px;
+}
+.card.static{padding:14px}
+.card summary{
+  list-style:none;
+  cursor:pointer;
+  display:flex;gap:12px;align-items:baseline;justify-content:space-between;
+}
+.card summary::-webkit-details-marker{display:none}
+.card-title{font-weight:650}
+.card-sub{color:var(--muted);font-size:13px}
+.card-body{margin-top:10px;color:var(--text)}
+.bullets{margin:8px 0 0 18px}
+.bullets li{margin:6px 0}
+.plain{margin:8px 0 0 18px}
+.chips{list-style:none;margin:8px 0 0 0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.chips li{
+  border:1px solid var(--border);
+  background:var(--soft);
+  border-radius:999px;
+  padding:6px 10px;
+  font-size:13px;
+  color:var(--text);
+}
+.muted{color:var(--muted)}
+.small{font-size:13px}
+.row{display:flex;gap:12px;align-items:flex-start}
+.year{
+  width:64px;min-width:64px;
+  font-weight:650;color:var(--muted)
+}
+.actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap;justify-content:flex-end}
+.btn{
+  border:1px solid var(--border);
+  background:var(--text);
+  color:white;
+  padding:8px 12px;
+  border-radius:10px;
+  font-size:14px;
+  cursor:pointer;
+}
+.btn:hover{opacity:.95}
+.btn.ghost{
+  background:var(--bg);
+  color:var(--text);
+}
+.btn.ghost:hover{background:var(--soft)}
+.pub-controls{
+  display:flex;flex-direction:column;gap:10px;
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  padding:12px 14px;
+  background:var(--soft);
+  margin:10px 0 12px;
+}
+.pub-controls input{
+  width:100%;
+  padding:10px 12px;
+  border-radius:10px;
+  border:1px solid var(--border);
+  font-size:14px;
+}
+.pub-filters{display:flex;gap:8px;flex-wrap:wrap}
+.pill{
+  border:1px solid var(--border);
+  background:var(--bg);
+  border-radius:999px;
+  padding:8px 12px;
+  font-size:13px;
+  cursor:pointer;
+}
+.pill.active{background:var(--text);color:white;border-color:var(--text)}
+.pub-list{margin:8px 0 0 18px}
+.pub-item{margin:6px 0}
+footer{
+  border-top:1px solid var(--border);
+  padding:16px 0;
+  color:var(--muted);
+  font-size:13px;
+}
+@media print{
+  nav, .actions, .pub-controls{display:none !important}
+  .hero{border-bottom:none}
+  a{color:#111827;text-decoration:none}
+  .card{break-inside:avoid}
+}
+
+
+html{scroll-behavior:smooth;scroll-padding-top:calc(var(--nav-h, 0px) + 16px);}
+section{scroll-margin-top:calc(var(--nav-h, 0px) + 18px);}
+
+.actions{display:flex;gap:10px;align-items:center;}
+.iconbtn{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:42px;height:42px;border-radius:14px;
+  border:1px solid var(--border); background:var(--bg); color:var(--text);
+  text-decoration:none;
+}
+.iconbtn:hover{background:var(--soft);}
+.iconbtn svg{display:block;fill:currentColor;}
+
+.pub-sticky{
+  position:sticky; top:var(--nav-h, 0px); z-index:6;
+  background:rgba(255,255,255,0.96); backdrop-filter: blur(8px);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  padding:12px 14px;
+  margin-top:12px;
+}
+.pub-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;}
+.pub-controls{display:flex;flex-direction:column;gap:10px;margin-top:10px;}
+.pub-filters{display:flex;flex-wrap:wrap;gap:10px;align-items:center;}
+.pub-wrap{margin-top:14px;}
+.pub-group{margin-top:14px;}
+.pub-group-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;}
+.pub-group h3{margin:0;font-size:16px;}
+
+
+/* Extra bottom space so the last section (Skills) can scroll under the sticky nav */
+main{padding-bottom:140px;}
+
+
+nav{z-index:100;}
+
+
+/* Contact form */
+.contact-card{border:1px solid var(--border);background:#fff;border-radius:18px;padding:18px;box-shadow:var(--shadow);}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.form-grid .full{grid-column:1/-1;}
+.field{display:flex;flex-direction:column;gap:6px;}
+.field label{font-weight:800;font-size:13px;color:var(--muted);}
+.field input,.field textarea{
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:12px 12px;
+  font:inherit;
+  background:#fff;
+}
+.field textarea{min-height:120px;resize:vertical;}
+.form-actions{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:12px;}
+.form-note{font-size:12px;color:var(--muted);}
+.form-status{font-size:12px;color:var(--muted);}
+@media (max-width:720px){
+  .form-grid{grid-template-columns:1fr;}
+
+  /* Mobile: menu open, optimized to 3 rows (no hamburger) */
+  .pillline.wa{
+    display:flex;
+    flex-wrap:wrap;
+    gap:6px;
+    font-size:11.5px;
+    line-height:1.35;
+  }
+  .pillline.wa .wa-label{
+    white-space:nowrap;
+    font-weight:700;
+  }
+  .pillline.wa .wa-value{
+    flex:1 1 100%;
+  }
+}
+}
+
+
+
+  
+
+/* Honeypot (spam protection) */
+.hp{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;}
+
+/* Buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;border-radius:14px;padding:12px 16px;font-weight:600;border:1px solid var(--border);background:var(--panel);color:var(--text);cursor:pointer;transition:transform .06s ease, box-shadow .15s ease, border-color .15s ease;}
+.btn:hover{border-color:rgba(15,23,42,.22);box-shadow:var(--shadow);}
+.btn:active{transform:translateY(1px);}
+.btn.primary{background:linear-gradient(135deg, var(--primary), var(--primary2));color:white;border-color:transparent;}
+.btn.busy{opacity:.7;cursor:not-allowed;}
+
+/* Accessibility */
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;}
+
+/* Mobile: compact icon grid (2 icons / 2 icons / full-width Contact) */
+@media (max-width:720px){
+  .actions{
+    display:grid;
+    grid-template-columns:repeat(2,44px);
+    grid-auto-rows:44px;
+    gap:10px;
+    justify-content:end;
+    align-items:center;
+  }
+  .actions .iconbtn{width:44px;height:44px;}
+  /* Contact spans both columns so the label never overflows */
+  .actions .contactbtn{
+    grid-column:1 / -1;
+    justify-self:stretch;
+    width:100%;
+    height:44px;
+    padding:0 14px;
+    justify-content:center;
+    white-space:nowrap;
+  }
+}
+</style>
+</head>
+<body>
+<div id="top" aria-hidden="true"></div>
+<header class="hero" id="hero">
+<div class="hero-top">
+<div>
+<h1>Bekir Sahin, Ph.D.</h1>
+<div class="subtitle">Milpitas, CA · <a href="tel:6699464137">669-946-4137</a></div>
+<div class="subtitle">
+<a href="mailto:bekir.sahin@sfbu.edu">bekir.sahin@sfbu.edu</a> ·
+        <a href="mailto:bekirs66@gmail.com">bekirs66@gmail.com</a>
+</div>
+<div class="pillline wa"><span class="wa-label">Work Authorization:</span><span class="wa-value">No sponsorship required (Eligible to work in the U.S.)</span></div>
+</div>
+<div class="actions">
+<a aria-label="ResearchGate" class="iconbtn" href="https://www.researchgate.net/profile/Bekir-Sahin-3" rel="noopener" target="_blank">
+<svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="6" cy="12" r="2.2"></circle>
+  <circle cx="12" cy="6" r="2.2"></circle>
+  <circle cx="18" cy="12" r="2.2"></circle>
+  <path d="M7.9 10.8 L10.2 8.5"></path>
+  <path d="M13.8 8.5 L16.1 10.8"></path>
+</svg></a>
+<a aria-label="Google Scholar" class="iconbtn" href="https://scholar.google.com/citations?user=i0VG7bcAAAAJ&amp;hl=en" rel="noopener" target="_blank">
+<svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M12 3 2 8l10 5 10-5-10-5Z"></path>
+  <path d="M6 10v5c0 1.8 2.7 4 6 4s6-2.2 6-4v-5"></path>
+  <path d="M22 8v6"></path>
+  <path d="M22 14c-1.2 0-2.2 1-2.2 2.2S20.8 18.4 22 18.4s2.2-1 2.2-2.2S23.2 14 22 14Z" stroke="none" fill="currentColor"></path>
+</svg></a>
+<a aria-label="Academia" class="iconbtn" href="https://ntnu-no.academia.edu/BekirSahin" rel="noopener" target="_blank">
+<svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M4 6h12a2 2 0 0 1 2 2v12H6a2 2 0 0 0-2 2V6Z"></path>
+  <path d="M18 20H8a2 2 0 0 0-2 2"></path>
+  <path d="M8 10h8"></path>
+  <path d="M8 14h6"></path>
+</svg></a>
+<a aria-label="LinkedIn" class="iconbtn" href="https://linkedin.com/in/bekirsahin" rel="noopener" target="_blank"><svg aria-hidden="true" focusable="false" height="18" viewbox="0 0 24 24" width="18">
+<path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5ZM.5 23.5h4V7.98h-4V23.5ZM8.5 7.98h3.83v2.12h.05c.53-1 1.84-2.06 3.79-2.06 4.05 0 4.8 2.67 4.8 6.14v9.32h-4v-8.26c0-1.97-.04-4.5-2.74-4.5-2.74 0-3.16 2.14-3.16 4.35v8.41h-4V7.98Z"></path>
+</svg></a>
+    <a class="btn ghost contactbtn" href="#contact">Contact</a>
+</div>
+</div>
+</header>
+<nav>
+<div class="nav-inner">
+
+<a class="nav-home" href="#top" aria-label="Home"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M3 10.5L12 3l9 7.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M5.5 10.5V21h13V10.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a> <a href="#about">About</a> <a href="#research">Research</a> <a href="#teaching">Teaching</a> <a href="#experience">Experience</a> <a href="#education">Education</a> <a href="#projects">Projects &amp; Grants</a> <a href="#publications">Publications</a> <a href="#service">Service</a> <a href="#awards">Awards</a> <a href="#skills">Skills</a>
+
+ </div>
+</nav>
+<main class="container">
+<section id="about">
+<h2>Professional Profile</h2>
+<p class="lead">Internationally recognized scholar in Supply Chain Management, Operations Management, Business Analytics, and Information Systems, with a sustained record of research, teaching, and service across the U.S., Middle East, and Europe. Listed among Stanford University’s Global Top 2% Most -Cited Researchers (2023), with a strong publication impact and active engagement in interdisciplinary, data - driven research. Skilled in quantitative modeling, analytics, optimization, and decision support, with extensive exper ience in AACSB -aligned curriculum design, technology -enhanced instruction, and culturally responsive, inclusive pedagogy.</p>
+</section>
+<section id="research">
+<h2>Research</h2>
+<div class="grid2">
+<div>
+<div class="label">Overview</div>
+<ul class="bullets">
+<li>My research focuses on quantitative and data -driven approaches to Supply Chain Management, Operations Management, Business Analytics, and Information Systems. I develop models in optimization, predictive analytics, fuzzy logic, multi -criteria decision maki ng, risk and resilience analytics, and digital transformation to enhance decision quality in complex global logistics and operational environments.</li>
+<li>I maintain a strong scholarly record with 37 peer -reviewed journal articles, 24 conference papers, a book chapter, multiple funded projects (PI, Co -PI, Investigator), and 1,519 citations (h -index: 19; i10-index: 27).</li>
+<li>My work integrates computer science, analytics, engineering, and business to produce theory - grounded and practice -oriented decision support solutions informed by Industry 4.0 technologies and AI-enabled analytics.</li>
+</ul>
+</div>
+<div>
+<div class="label">Research Interests</div>
+<ul class="chips">
+<li>Operations &amp; Supply Chain Analytics</li>
+<li>Information Systems &amp; Decision Support</li>
+<li>Optimization &amp; Simulation</li>
+<li>Fuzzy Logic &amp; Multi -Criteria Decision Making</li>
+<li>Logistics &amp; Transportation Systems</li>
+<li>Risk &amp; Resilience in Supply Chains</li>
+<li>Digital Transformation &amp; Industry 4.0</li>
+<li>AI/ML Applications in Operations</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="teaching">
+<h2>Teaching</h2>
+<div class="grid2">
+<div>
+<div class="label">Overview</div>
+<ul class="bullets">
+<li>I have over ten years of international teaching experience at undergraduate, MBA, and MS levels in Supply Chain Management, Operations Management, Business Analytics, Information Systems, Quantitative Methods, Logistics, Procurement, and Production Plannin g. My teaching emphasizes inclusive, applied, and technology -supported learning through real -world cases, analytics tools, and project -based instruction.</li>
+<li>Experienced in AACSB -aligned curriculum development, Canvas -based online course design, and experiential, student -centered pedagogy.</li>
+<li>Supervised 25+ capstone projects and advised 100+ students across logistics, operations, analytics, and supply chain disciplines.</li>
+</ul>
+</div>
+<div>
+<div class="label">Teaching Interests</div>
+<ul class="chips">
+<li>Supply Chain Management</li>
+<li>Operations Management</li>
+<li>Logistics Systems</li>
+<li>Management Information Systems</li>
+<li>Business Analytics</li>
+<li>Decision Sciences</li>
+<li>Quantitative Methods</li>
+<li>Data Visualization</li>
+<li>Service Operations</li>
+<li>Predictive Analytics</li>
+<li>Technology &amp; Operations</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="experience">
+<h2>Professional Experience</h2>
+<p class="muted">Click a role to expand details (courses, responsibilities, and outcomes).</p>
+<div class="stack">
+<details class="card">
+<summary><span class="card-title">Adjunct Professor</span><span class="card-sub">San Francisco Bay University, Fremont, CA, May - June 2025</span></summary>
+<div class="card-body">
+<div class="label">Undergraduate</div>
+<ul class="plain">
+<li>CS 350 - Data Structures</li>
+</ul>
+<div class="label">Highlights</div>
+<ul class="bullets">
+<li>Designed and delivered a complete online, asynchronous course using Canvas.</li>
+<li>Developed lectures, assignments, quizzes, exams, and all assessment components.</li>
+<li>Experience strengthened capabilities in online teaching, course design, and multimodal instruction.</li>
+</ul>
+</div>
+</details>
+<details class="card">
+<summary><span class="card-title">Co-founder &amp; Business Director</span><span class="card-sub">Synapses Ventures, Palo Alto, CA, Jun 2023 - May 2025</span></summary>
+<div class="card-body">
+<div class="label">Highlights</div>
+<ul class="bullets">
+<li>Drive vision and strategy, ensuring alignment with long -term goals. Actively scout for cutting -edge technologies and potential investments.</li>
+<li>Leverage and expand network, particularly connections in Stanford and Silicon Valley, to support portfolio companies.</li>
+<li>Provide funding and tailored consultancy services to help startups thrive and achieve success.</li>
+<li>Lead diverse teams to develop innovative solutions in AI, supply chain, healthcare, and fintech</li>
+</ul>
+</div>
+</details>
+<details class="card">
+<summary><span class="card-title">Product Manager</span><span class="card-sub">Megalabs.ai, Customereye.ai, Palo Alto, CA, Jun 2023 - May 2025</span></summary>
+<div class="card-body">
+<div class="label">Highlights</div>
+<ul class="bullets">
+<li>Defined product vision, roadmap, and feature development strategies.</li>
+<li>Conducted market and customer analysis to drive continuous product improvement.</li>
+<li>Coordinated cross -functional engineering, design, and analytics teams.</li>
+<li>Gained hands -on experience relevant to digital supply chains and data -driven business operations.</li>
+</ul>
+</div>
+</details>
+<details class="card">
+<summary><span class="card-title">Technical Project Manager</span><span class="card-sub">Internship - IT Society, August 2024</span></summary>
+<div class="card-body">
+<div class="label">Highlights</div>
+<ul class="bullets">
+<li>Supported cross -team coordination and delivery of technical solutions.</li>
+</ul>
+</div>
+</details>
+<details class="card">
+<summary><span class="card-title">Data Scientist</span><span class="card-sub">Fellowship Program, The Data Incubator, March 2024</span></summary>
+<div class="card-body">
+<div class="label">Capstone Project</div>
+<p>Optimizing Machine Learning Algorithms for Predictive Analytics</p>
+</div>
+</details>
+<details class="card">
+<summary><span class="card-title">Mentor</span><span class="card-sub">Liverpool John Moores University Jan - Aug 2023</span></summary>
+<div class="card-body">
+<div class="label">Graduate</div>
+<ul class="plain">
+<li>LJMU -7501 -BEGP Project Management Fundamentals</li>
+<li>LJMU -7504 -UCENPG Operations Research</li>
+</ul>
+<div class="label">Highlights</div>
+<ul class="bullets">
+<li>Developed curriculum, led online instruction, and mentored master’s students.</li>
+</ul>
+</div>
+</details>
+<details class="card">
+<summary><span class="card-title">Associate Professor of Logistics Management</span><span class="card-sub">National University of Science and Technology, Oman, 2021-2023</span></summary>
+<div class="card-body">
+<div class="label">Undergraduate</div>
+<ul class="plain">
+<li>PTRL I.I Introduction to Logistics</li>
+<li>PSHI I.I Introduction to Shipping</li>
+<li>PTRL II.I Logistics Management</li>
+<li>PSHI II.I Liner Shipping</li>
+<li>PTRL II.II Supply Chain Management</li>
+<li>PTRL -III-II International Transactions and Customs</li>
+<li>PTRL IV.I Management of Integrated Supply Chains</li>
+<li>PPOR IV.I Port Management</li>
+</ul>
+<div class="label">Highlights</div>
+<ul class="bullets">
+<li>Taught 7 undergraduate courses in supply chain management, logistics management, shipping operations, port management, and customs operations, incorporating substantial content on procurement, purchasing, and sourcing practices throughout these courses.</li>
+<li>Supervised 25 Graduation projects, 21 Internship students. Graduate project advisor for several projects. Guided more than 100 students as an academic advisor.</li>
+<li>Member of Curriculum Development and Research Ethics &amp; Biosafety Committee. Chair of Colloquium Meetings at the Logistics Management department.</li>
+<li>Authored 10 research papers, 1 scientific article, and participated in 3 conferences.</li>
+<li>Principal investigator of 1 project. Co-principal investigator of 3 project s. Investigator of 1 project.</li>
+</ul>
+</div>
+</details>
+<details class="card">
+<summary><span class="card-title">Postdoc at the Department of Computer Science</span><span class="card-sub">Norwegian University of Science and Technology, Norway, 2019 -2021</span></summary>
+<div class="card-body">
+<div class="label">Highlights</div>
+<ul class="bullets">
+<li>Authored 9 research papers, 1 scientific article, and participated in 5 conferences.</li>
+<li>Principal investigator of 1 project.</li>
+</ul>
+</div>
+</details>
+<details class="card">
+<summary><span class="card-title">Teaching Fellow of Logistics Management</span><span class="card-sub">Black Sea Technical University, Turkey, 2015-2019</span></summary>
+<div class="card-body">
+<div class="label">Undergraduate</div>
+<ul class="plain">
+<li>DEC 4003 Chartering and Brokering</li>
+<li>DUM 3007 Ports and Terminal Operations</li>
+<li>DUM 4010 Logistics Management</li>
+<li>DEC 4003 Chartering and Brokering</li>
+<li>DEC 3001 English for Deck Officers - II</li>
+</ul>
+<div class="label">Highlights</div>
+<ul class="bullets">
+<li>Taught a total of 5 undergraduate courses, mainly focused on maritime and business operations in supply chain and logistics management.</li>
+<li>Fulfilled academic duties, authored 11 research papers, and participated in 4 conferences.</li>
+<li>Principal investigator of 1 project.</li>
+</ul>
+</div>
+</details>
+<details class="card">
+<summary><span class="card-title">Research Fellow of Logistics Management</span><span class="card-sub">Istanbul Technical University, Turkey, 2012-2015</span></summary>
+<div class="card-body">
+<p>Fulfilled academic duties, completed doctoral thesis, authored 11 research papers, 11 conference</p>
+<p>papers and 1 scientific article.</p>
+</div>
+</details>
+</div>
+</section>
+<section id="education"><h2>Education</h2><div class="stack">
+<div class="card static">
+<div class="row">
+<div class="year">2015</div>
+<div>
+<div class="card-title">Ph.D. in Maritime Transportation and Management Engineering</div>
+<div class="card-body">The Maritime Department<br/>Istanbul Technical University, Istanbul, Turkey<br/>Thesis Title: “Risk assessment and maritime accident analysis for ice -covered waters”</div>
+</div>
+</div>
+</div>
+<div class="card static">
+<div class="row">
+<div class="year">2011</div>
+<div>
+<div class="card-title">M.Sc. in Engineering Technology</div>
+<div class="card-body">The College of Technology<br/>University of Houston, Houston, TX<br/>Project Title: “Kinematic analysis of multiple degrees of freedom robots”</div>
+</div>
+</div>
+</div>
+<div class="card static">
+<div class="row">
+<div class="year">2007</div>
+<div>
+<div class="card-title">B.Eng. in Maritime Transportation and Management Engineering (Business Administration)</div>
+<div class="card-body">The Engineering Department<br/>Istanbul University, Istanbul, Turkey</div>
+</div>
+</div>
+</div>
+</div></section>
+<section id="projects">
+<h2>Projects &amp; Grants</h2>
+<ul class="pub-list">
+<li class="pub-item" data-text="sahin, b. (2019 -2020). ercim (european research consortium for informatics and mathematics) - supply chain optimization algorithms in an uncertain environment, 43.320 eur, principal investigator." data-type="project">Sahin, B. (2019 -2020). ERCIM (European Research Consortium for Informatics and Mathematics) - Supply chain optimization algorithms in an uncertain environment, 43.320 EUR, Principal Investigator.</li>
+<li class="pub-item" data-text="sahin, b. (2020). crane -equipped patient intervention ship (project code: ffp -2018 -7682), 10000 tl, principal investigator." data-type="project">Sahin, B. (2020). Crane -equipped patient intervention ship (Project Code: FFP -2018 -7682), 10000 TL, Principal Investigator.</li>
+<li class="pub-item" data-text="sahin, b. (2021). digitalization impact on skills &amp; training: the case of logistics companies in oman, internal research grant, 6000 omr, co -principal investigator." data-type="project">Sahin, B. (2021). Digitalization impact on skills &amp; training: The case of logistics companies in Oman, Internal Research Grant, 6000 OMR, Co -principal Investigator.</li>
+<li class="pub-item" data-text="sahin, b. (2022). omani logistics gateways capacity and potential demand: gaps and misalignment, internal research grant, 1800 omr, principal investigator." data-type="project">Sahin, B. (2022). Omani logistics gateways capacity and potential demand: Gaps and misalignment, Internal Research Grant, 1800 OMR, Principal Investigator.</li>
+<li class="pub-item" data-text="sahin, b. (2022). impact of cyclone shaheen on supply chains of daily essential goods: exploring vulnerability and resilience strategies for sohar’s road transportation, internal research grant, 1800 omr, co -investigator." data-type="project">Sahin, B. (2022). Impact of cyclone Shaheen on supply chains of daily essential goods: Exploring vulnerability and resilience strategies for Sohar’s road transportation, Internal Research Grant, 1800 OMR, Co -Investigator.</li>
+<li class="pub-item" data-text="sahin, b. (2022). exploring the future needs of maritime training and education: digital, sustainable and soft skills, internal research grant, 2000 omr, co -investigator." data-type="project">Sahin, B. (2022). Exploring the future needs of maritime training and education: Digital, sustainable and soft skills, Internal Research Grant, 2000 OMR, Co -Investigator.</li>
+<li class="pub-item" data-text="sahin, b. (2022). monitoring harmful algal blooms for north oman coast with remote sensing techniques, trc, 6000 omr, investigator." data-type="project">Sahin, B. (2022). Monitoring harmful algal blooms for north Oman coast with remote sensing techniques, TRC, 6000 OMR, Investigator.</li>
+</ul>
+</section>
+<section id="publications"><div class="pub-sticky" id="pubSticky"><div class="pub-head"><h2>Publications</h2><div class="muted small" id="pubCount"></div></div><div class="pub-controls"><input aria-label="Search publications" id="pubSearch" placeholder="Search publications (title, venue, year…)" type="search"/><div aria-label="Publication filters" class="pub-filters" role="tablist"><button aria-selected="true" class="pill active" data-filter="all" role="tab">All</button><button aria-selected="false" class="pill" data-filter="journal" role="tab">Journal</button><button aria-selected="false" class="pill" data-filter="conference" role="tab">Conference</button><button aria-selected="false" class="pill" data-filter="book" role="tab">Book chapter</button><button aria-selected="false" class="pill" data-filter="popular" role="tab">Popular science</button></div></div></div><div class="pub-wrap"><div class="pub-group" data-cat="book"><div class="pub-group-head"><h3>Book Chapters</h3><div class="muted small pub-meta">1 item(s)</div></div><ul class="pub-list"><li class="pub-item" data-text="sahin, b. (2014). route selection problem in the arctic region for the global logistics industry . crc press. https://doi.org/10.1201/b18091" data-type="book">Sahin, B. (2014). Route selection problem in the arctic region for the global logistics industry . CRC Press. <a href="https://doi.org/10.1201/b18091" rel="noopener" target="_blank">https://doi.org/10.1201/b18091</a></li></ul></div><div class="pub-group" data-cat="journal"><div class="pub-group-head"><h3>Peer-reviewed Journal Articles</h3><div class="muted small pub-meta">34 item(s)</div></div><ul class="pub-list"><li class="pub-item" data-text="aslan, b., sahin, b. , &amp; yazir, d. (2024). a comprehensive analysis for collision and grounding accidents by using a hybrid fta -fucom -eta method. international journal of shipping and transport logistics , 18(4), 449 -490. https://doi.org/10.1504/ijstl.2024.140430" data-type="journal">Aslan, B., Sahin, B. , &amp; Yazir, D. (2024). A comprehensive analysis for collision and grounding accidents by using a hybrid FTA -FUCOM -ETA method. International Journal of Shipping and Transport Logistics , 18(4), 449 -490. <a href="https://doi.org/10.1504/IJSTL.2024.140430" rel="noopener" target="_blank">https://doi.org/10.1504/IJSTL.2024.140430</a></li><li class="pub-item" data-text="kiran, f., &amp; sahin, b. (2023). circular supply chain practices, big data implementation and firm performance: mediating role of digital technology. the electronic journal of information systems in developing countries , e12290 . https://doi.org/10.1002/isd2.12290 khan, a. q., nikolov, n., matskin, m., prodan, r., roman, d., sahin, b. , bussler, c., &amp; soylu, a. (2023). smart data placement using storage -as-a-service model for big data pipelines. sensors , 23(2), 564. https://doi.org/10.3390/s23020564" data-type="journal">Kiran, F., &amp; Sahin, B. (2023). Circular supply chain practices, big data implementation and firm performance: Mediating role of digital technology. The Electronic Journal of Information Systems in Developing Countries , e12290 .<br><a href="https://doi.org/10.1002/isd2.12290" rel="noopener" target="_blank">https://doi.org/10.1002/isd2.12290</a></li>
+<li class="pub-item" data-text="khan, a. q., nikolov, n., matskin, m., prodan, r., roman, d., sahin, b. , bussler, c., &amp;amp; soylu, a. (2023). smart data placement using storage -as-a-service model for big data pipelines. sensors , 23(2), 564. https://doi.org/10.3390/s23020564" data-type="journal">Khan, A. Q., Nikolov, N., Matskin, M., Prodan, R., Roman, D., Sahin, B. , Bussler, C., &amp; Soylu, A. (2023). Smart data placement using Storage -as-a-Service model for big data pipelines. Sensors , 23(2), 564.<br><a href="https://doi.org/10.3390/s23020564" rel="noopener" target="_blank">https://doi.org/10.3390/s23020564</a></li><li class="pub-item" data-text="rahman, n. s. f. a., hamid, a. a., lirn, t. -c., al kalbani, k., &amp; sahin, b. (2022). the adoption of industry 4.0 practices by the logistics industry: a systematic review of the gulf region. cleaner logistics and supply chain , 100085 . https://doi.org/10.1016/j.clscn.2022.100085" data-type="journal">Rahman, N. S. F. A., Hamid, A. A., Lirn, T. -C., Al Kalbani, K., &amp; Sahin, B. (2022). The adoption of Industry 4.0 practices by the logistics industry: A systematic review of the Gulf region. Cleaner Logistics and Supply Chain , 100085 . <a href="https://doi.org/10.1016/j.clscn.2022.100085" rel="noopener" target="_blank">https://doi.org/10.1016/j.clscn.2022.100085</a></li><li class="pub-item" data-text="nazligul, y. e., yazir, d., &amp; sahin, b. (2022). selection of desalination system for commercial vessels by implementing improved intuitionistic fuzzy topsis method. mathematical problems in engineering , 2022 . https://doi.org/10.1155/2022/5739682" data-type="journal">Nazligul, Y. E., Yazir, D., &amp; Sahin, B. (2022). Selection of desalination system for commercial vessels by implementing improved intuitionistic fuzzy TOPSIS method. Mathematical Problems in Engineering , 2022 . <a href="https://doi.org/10.1155/2022/5739682" rel="noopener" target="_blank">https://doi.org/10.1155/2022/5739682</a></li><li class="pub-item" data-text="rahman, n. s. f. a., hamid, a. a., sahin, b. , wang, m., &amp; islam, s. (2022). a new human capital development framework in logistics and supply chain incorporating industry 4.0. international journal of applied logistics (ijal) , 12(1), 1 -17. 10.4018/ijal.309086" data-type="journal">Rahman, N. S. F. A., Hamid, A. A., Sahin, B. , Wang, M., &amp; Islam, S. (2022). A new human capital development framework in logistics and supply chain incorporating Industry 4.0. International Journal of Applied Logistics (IJAL) , 12(1), 1 -17. 10.4018/IJAL.309086</li><li class="pub-item" data-text="yazir, d., sahin, b. , &amp; alkac, m. (2021). selection of an inert gas system for the transportation of direct reduced iron. mathematical problems in engineering , 2021 . https://doi.org/10.1155/2021/8529724" data-type="journal">Yazir, D., Sahin, B. , &amp; Alkac, M. (2021). Selection of an inert gas system for the transportation of direct reduced iron. Mathematical Problems in Engineering , 2021 . <a href="https://doi.org/10.1155/2021/8529724" rel="noopener" target="_blank">https://doi.org/10.1155/2021/8529724</a></li><li class="pub-item" data-text="sahin, b. , yazir, d., hamid, a. a., &amp; abdul rahman, n. s. f. (2021). maritime supply chain optimization by using fuzzy goal programming. algorithms , 14(8), 234. https://doi.org/10.3390/a14080234" data-type="journal">Sahin, B. , Yazir, D., Hamid, A. A., &amp; Abdul Rahman, N. S. F. (2021). Maritime supply chain optimization by using fuzzy goal programming. Algorithms , 14(8), 234. <a href="https://doi.org/10.3390/a14080234" rel="noopener" target="_blank">https://doi.org/10.3390/a14080234</a></li><li class="pub-item" data-text="sahin, b. , yazir, d., soylu, a., &amp; yip, t. l. (2021). improved fuzzy ahp based game -theoretic model for shipyard selection. ocean engineering , 233, 109060. https://doi.org/10.1016/j.oceaneng.2021.109060" data-type="journal">Sahin, B. , Yazir, D., Soylu, A., &amp; Yip, T. L. (2021). Improved fuzzy AHP based game -theoretic model for shipyard selection. Ocean Engineering , 233, 109060. <a href="https://doi.org/10.1016/j.oceaneng.2021.109060" rel="noopener" target="_blank">https://doi.org/10.1016/j.oceaneng.2021.109060</a></li><li class="pub-item" data-text="sahin, b. (2021). ontology -based fault tree analysis algorithms in a fuzzy environment for autonomous ships. ieee access, 9 , 40915 -40932. 10.1109/access.2021.3061929 yazır, d., sahin, b. , yip, t. l., &amp; tseng, p. -h. (2020). effects of covid -19 on maritime industry: a review. international maritime health . https://doi.org/10.5603/imh.2020.0044 yazır, d., sahin, b. , &amp; yip, t. l. (2020). selection of new design gas carriers by using fuzzy evamix method. the asian journal of shipping and logistics . https://doi.org/10.1016/j.ajsl.2020.10.001" data-type="journal">Sahin, B. (2021). Ontology -based fault tree analysis algorithms in a fuzzy environment for autonomous ships. IEEE Access, 9 , 40915 -40932. 10.1109/ACCESS.2021.3061929 Yazır, D., Sahin, B. , Yip, T. L., &amp; Tseng, P. -H. (2020). Effects of COVID -19 on maritime industry: A review. International Maritime Health . <a href="https://doi.org/10.5603/IMH.2020.0044" rel="noopener" target="_blank">https://doi.org/10.5603/IMH.2020.0044</a> Yazır, D., Sahin, B. , &amp; Yip, T. L. (2020). Selection of new design gas carriers by using fuzzy EVAMIX method. The Asian Journal of Shipping and Logistics . <a href="https://doi.org/10.1016/j.ajsl.2020.10.001" rel="noopener" target="_blank">https://doi.org/10.1016/j.ajsl.2020.10.001</a></li><li class="pub-item" data-text="sahin, b. , &amp; soylu, a. (2020). multi -layer, multi -segment iterative optimization for maritime supply chain operations in a dynamic fuzzy environment. ieee access , 144993 -145005. https://doi.org/10.1109/access.2020.3014968" data-type="journal">Sahin, B. , &amp; Soylu, A. (2020). Multi -layer, multi -segment iterative optimization for maritime supply chain operations in a dynamic fuzzy environment. IEEE Access , 144993 -145005. <a href="https://doi.org/10.1109/ACCESS.2020.3014968" rel="noopener" target="_blank">https://doi.org/10.1109/ACCESS.2020.3014968</a></li><li class="pub-item" data-text="sahin, b. , &amp; soylu, a. (2020). intuitionistic fuzzy analytical network process models for maritime supply chain. applied soft computing , 106614 . https://doi.org/10.1016/j.asoc.2020.106614" data-type="journal">Sahin, B. , &amp; Soylu, A. (2020). Intuitionistic fuzzy analytical network process models for maritime supply chain. Applied Soft Computing , 106614 . <a href="https://doi.org/10.1016/j.asoc.2020.106614" rel="noopener" target="_blank">https://doi.org/10.1016/j.asoc.2020.106614</a></li><li class="pub-item" data-text="sahin, b. , yip, t. l., tseng, p. -h., kabak, m., &amp; soylu, a. (2020). an application of a fuzzy topsis multi -criteria decision analysis algorithm for dry bulk carrier selection. information , 11(5), 251. https://doi.org/10.3390/info11050251" data-type="journal">Sahin, B. , Yip, T. L., Tseng, P. -H., Kabak, M., &amp; Soylu, A. (2020). An application of a fuzzy TOPSIS multi -criteria decision analysis algorithm for dry bulk carrier selection. Information , 11(5), 251. <a href="https://doi.org/10.3390/info11050251" rel="noopener" target="_blank">https://doi.org/10.3390/info11050251</a></li><li class="pub-item" data-text="yazir, d., &amp; sahin, b. (2020). a comparative analysis for selecting possible logistics base locations in turkey. dokuz eylül üniversitesi faculty of engineering journal of science and engineering , 22(66), 929 -940. https://doi.org/10.21205/deufmd.2020226626" data-type="journal">Yazir, D., &amp; Sahin, B. (2020). A comparative analysis for selecting possible logistics base locations in Turkey. Dokuz Eylül Üniversitesi Faculty of Engineering Journal of Science and Engineering , 22(66), 929 -940. <a href="https://doi.org/10.21205/deufmd.2020226626" rel="noopener" target="_blank">https://doi.org/10.21205/deufmd.2020226626</a></li><li class="pub-item" data-text="akpinar, h., &amp; sahin, b. (2019). strategic management approach for port state control. maritime business review . https://doi.org/10.1108/mabr -10-2019 -0043" data-type="journal">Akpinar, H., &amp; Sahin, B. (2019). Strategic management approach for port state control. Maritime Business Review . <a href="https://doi.org/10.1108/MABR" rel="noopener" target="_blank">https://doi.org/10.1108/MABR</a> -10-2019 -0043</li><li class="pub-item" data-text="sahin, b. (2019). route prioritization by using fuzzy analytic hierarchy process extended dijkstra algorithm. j eta maritime sci , 7(1), 3 -15. https://doi.org/10.5505/jems.2019.39306" data-type="journal">Sahin, B. (2019). Route prioritization by using fuzzy analytic hierarchy process extended Dijkstra algorithm. J ETA Maritime Sci , 7(1), 3 -15. <a href="https://doi.org/10.5505/jems.2019.39306" rel="noopener" target="_blank">https://doi.org/10.5505/jems.2019.39306</a></li><li class="pub-item" data-text="sahin, b. , &amp; yazir, d. (2019). an analysis for the effects of different approaches used to determine expertise coefficients on improved fuzzy analytical hierarchy process method. journal of the faculty of engineering and architecture of gazi university , 34(1), 89 - 102. https://doi.org/10.17341/gazimmfd.416466" data-type="journal">Sahin, B. , &amp; Yazir, D. (2019). An analysis for the effects of different approaches used to determine expertise coefficients on improved fuzzy analytical hierarchy process method. Journal of the Faculty of Engineering and Architecture of Gazi University , 34(1), 89 - 102. <a href="https://doi.org/10.17341/gazimmfd.416466" rel="noopener" target="_blank">https://doi.org/10.17341/gazimmfd.416466</a></li><li class="pub-item" data-text="unver, b., gurgen, s., sahin, b. , &amp; altin, i. (2019). crankcase explosion for two -stroke marine diesel engine by using fault tree analysis method in fuzzy environment. engineering failure analysis , 97, 288 -299. https://doi.org/10.1016/j.engfailanal.2019.01.007" data-type="journal">Unver, B., Gurgen, S., Sahin, B. , &amp; Altin, I. (2019). Crankcase explosion for two -stroke marine diesel engine by using fault tree analysis method in fuzzy environment. Engineering Failure Analysis , 97, 288 -299. <a href="https://doi.org/10.1016/j.engfailanal.2019.01.007" rel="noopener" target="_blank">https://doi.org/10.1016/j.engfailanal.2019.01.007</a></li><li class="pub-item" data-text="sahin, b. , gurgen, s., unver, b., &amp; altin, i. (2018). forecasting the baltic dry index by using an artificial neural network approach. turkish journal of electrical engineering &amp; computer sciences , 26(3), 1673 -1684. https://doi.org/10.3906/elk -1706 -155" data-type="journal">Sahin, B. , Gurgen, S., Unver, B., &amp; Altin, I. (2018). Forecasting the Baltic Dry Index by using an artificial neural network approach. Turkish Journal of Electrical Engineering &amp; Computer Sciences , 26(3), 1673 -1684. <a href="https://doi.org/10.3906/elk" rel="noopener" target="_blank">https://doi.org/10.3906/elk</a> -1706 -155</li><li class="pub-item" data-text="sahin, b. , &amp; chan, y. (2018). risk assessment of the istanbul strait by using ports and waterways safety assessment (pawsa) method. pamukkale üniversitesi mühendislik bilimleri dergisi , 24(4), 730 -738. https://doi.org/10.5505/pajes.2017.45762" data-type="journal">Sahin, B. , &amp; Chan, Y. (2018). Risk assessment of the Istanbul Strait by using Ports and Waterways Safety Assessment (PAWSA) method. Pamukkale Üniversitesi Mühendislik Bilimleri Dergisi , 24(4), 730 -738. <a href="https://doi.org/10.5505/pajes.2017.45762" rel="noopener" target="_blank">https://doi.org/10.5505/pajes.2017.45762</a></li><li class="pub-item" data-text="yazir, d., sahin, b. , &amp; eruz, c. (2018). evaluation of sediment transportation processes in designing coastal structures of arakli. pamukkale university journal of engineering sciences , 24(6), 1005 -1013. https://doi.org/10.5505/pajes.2017.19971" data-type="journal">Yazir, D., Sahin, B. , &amp; Eruz, C. (2018). Evaluation of sediment transportation processes in designing coastal structures of Arakli. Pamukkale University Journal of Engineering Sciences , 24(6), 1005 -1013. <a href="https://doi.org/10.5505/pajes.2017.19971" rel="noopener" target="_blank">https://doi.org/10.5505/pajes.2017.19971</a></li><li class="pub-item" data-text="yazir, d., &amp; sahin, b. (2017). linear regression approach for the financial risks of shipping industry. transnav , the international journal on marine navigation and safety of sea transportation , 11(4). https://doi.org/10.12716/1001.11.04.09" data-type="journal">Yazir, D., &amp; Sahin, B. (2017). Linear regression approach for the financial risks of shipping industry. TransNav , the International Journal on Marine Navigation and Safety of Sea Transportation , 11(4). <a href="https://doi.org/10.12716/1001.11.04.09" rel="noopener" target="_blank">https://doi.org/10.12716/1001.11.04.09</a></li><li class="pub-item" data-text="sahin, b. (2017). consistency control and expert consistency prioritization for ffta by using extent analysis method of trapezoidal fahp. applied soft computing , 56, 46-54. https://doi.org/10.1016/j.asoc.2017.02.027" data-type="journal">Sahin, B. (2017). Consistency control and expert consistency prioritization for FFTA by using extent analysis method of trapezoidal FAHP. Applied Soft Computing , 56, 46-54. <a href="https://doi.org/10.1016/j.asoc.2017.02.027" rel="noopener" target="_blank">https://doi.org/10.1016/j.asoc.2017.02.027</a></li><li class="pub-item" data-text="sahin, b. , &amp; yip, t. l. (2017). shipping technology selection for dynamic capability based on improved gaussian fuzzy ahp model. ocean engineering , 136, 233 -242. https://doi.org/10.1016/j.oceaneng.2017.03.032" data-type="journal">Sahin, B. , &amp; Yip, T. L. (2017). Shipping technology selection for dynamic capability based on improved Gaussian fuzzy AHP model. Ocean Engineering , 136, 233 -242. <a href="https://doi.org/10.1016/j.oceaneng.2017.03.032" rel="noopener" target="_blank">https://doi.org/10.1016/j.oceaneng.2017.03.032</a></li><li class="pub-item" data-text="senol, y. e., &amp; sahin, b. (2016). a novel real -time continuous fuzzy fault tree analysis (rc - ffta) model for dynamic environment. ocean engineering , 127, 70-81. https://doi.org/10.1016/j.oceaneng.2016.09.035" data-type="journal">Senol, Y. E., &amp; Sahin, B. (2016). A novel real -time continuous fuzzy fault tree analysis (RC - FFTA) model for dynamic environment. Ocean Engineering , 127, 70-81. <a href="https://doi.org/10.1016/j.oceaneng.2016.09.035" rel="noopener" target="_blank">https://doi.org/10.1016/j.oceaneng.2016.09.035</a></li><li class="pub-item" data-text="sahin, b. (2016). the obligations of single -propeller vessels at the head -on situation. transnav: international journal on marine navigation and safety of sea transportation , 10. https://doi.org/10.12716/1001.10.01.11" data-type="journal">Sahin, B. (2016). The obligations of single -propeller vessels at the head -on situation. TransNav: International Journal on Marine Navigation and Safety of Sea Transportation , 10. <a href="https://doi.org/10.12716/1001.10.01.11" rel="noopener" target="_blank">https://doi.org/10.12716/1001.10.01.11</a></li><li class="pub-item" data-text="kum, s., &amp; sahin, b. (2016). a survey on ice navigation research. transactions of navigation , 1(1), 23 -28. https://doi.org/10.18949/jintransnavi.1.1_23" data-type="journal">Kum, S., &amp; Sahin, B. (2016). A survey on ice navigation research. Transactions of Navigation , 1(1), 23 -28. <a href="https://doi.org/10.18949/jintransnavi.1.1_23" rel="noopener" target="_blank">https://doi.org/10.18949/jintransnavi.1.1_23</a></li><li class="pub-item" data-text="sahin, b. (2015). risk assessment and marine accident analysis in ice -covered waters , ph.d. dissertation, itu graduate school, 2015." data-type="journal">Sahin, B. (2015). Risk assessment and marine accident analysis in ice -covered waters , Ph.D. Dissertation, ITU Graduate School, 2015.</li><li class="pub-item" data-text="sahin, b. , &amp; senol, y. e. (2015). a novel process model for marine accident analysis by using generic fuzzy -ahp algorithm. the journal of navigation , 68(1), 162 -183. https://doi.org/10.1017/s0373463314000514" data-type="journal">Sahin, B. , &amp; Senol, Y. E. (2015). A novel process model for marine accident analysis by using generic fuzzy -AHP algorithm. The Journal of Navigation , 68(1), 162 -183. <a href="https://doi.org/10.1017/S0373463314000514" rel="noopener" target="_blank">https://doi.org/10.1017/S0373463314000514</a></li><li class="pub-item" data-text="sahin, b. , &amp; kum, s. (2015). risk assessment of arctic navigation by using improved fuzzy - ahp approach. international journal of maritime engineering , 157(4), 241. https://doi.org/10.3940/rina.ijme.2015.a4.337" data-type="journal">Sahin, B. , &amp; Kum, S. (2015). Risk assessment of Arctic navigation by using improved fuzzy - AHP approach. International Journal of Maritime Engineering , 157(4), 241. <a href="https://doi.org/10.3940/rina.ijme.2015.a4.337" rel="noopener" target="_blank">https://doi.org/10.3940/rina.ijme.2015.a4.337</a></li><li class="pub-item" data-text="kum, s., &amp; sahin, b. (2015). a root cause analysis for arctic marine accidents from 1993 to 2011. safety science , 74, 206 -220. https://doi.org/10.1016/j.ssci.2014.12.010" data-type="journal">Kum, S., &amp; Sahin, B. (2015). A root cause analysis for Arctic marine accidents from 1993 to 2011. Safety Science , 74, 206 -220. <a href="https://doi.org/10.1016/j.ssci.2014.12.010" rel="noopener" target="_blank">https://doi.org/10.1016/j.ssci.2014.12.010</a></li><li class="pub-item" data-text="senol, y. e., aydogdu, y. v., sahin, b. , &amp; kilic, i. (2015). fault tree analysis of chemical cargo contamination by using fuzzy approach. expert systems with applications , 42(12), 5232 - 5244. https://doi.org/10.1016/j.eswa.2015.02.027" data-type="journal">Senol, Y. E., Aydogdu, Y. V., Sahin, B. , &amp; Kilic, I. (2015). Fault tree analysis of chemical cargo contamination by using fuzzy approach. Expert Systems with Applications , 42(12), 5232 - 5244. <a href="https://doi.org/10.1016/j.eswa.2015.02.027" rel="noopener" target="_blank">https://doi.org/10.1016/j.eswa.2015.02.027</a></li><li class="pub-item" data-text="sahin, b. , senol, y. e., bulut, e., &amp; duru, o. (2015). optimizing technology selection in maritime logistics. research in logistics &amp; production , 5." data-type="journal">Sahin, B. , Senol, Y. E., Bulut, E., &amp; Duru, O. (2015). Optimizing technology selection in maritime logistics. Research in Logistics &amp; Production , 5.</li><li class="pub-item" data-text="sahin, b. , &amp; kum, s. (2014). route selection approach for vessels in ice covered waters. marine science and technology bulletin , 3(2), 1 -4." data-type="journal">Sahin, B. , &amp; Kum, S. (2014). Route selection approach for vessels in ice covered waters. Marine Science and Technology Bulletin , 3(2), 1 -4.</li><li class="pub-item" data-text="senol, y. e., sahin, b. , &amp; kum, s. (2013). marine accident analysis by using pairwise comparison. j eta maritime sci , 1(2), 59 -64." data-type="journal">Senol, Y. E., Sahin, B. , &amp; Kum, S. (2013). Marine accident analysis by using pairwise comparison. J ETA Maritime Sci , 1(2), 59 -64.</li></ul></div><div class="pub-group" data-cat="conference"><div class="pub-group-head"><h3>Conference Papers</h3><div class="muted small pub-meta">23 item(s)</div></div><ul class="pub-list"><li class="pub-item" data-text="sahin, b. , (2025, january). ai-driven segmentation with deep learning u -net architecture for skin cancer detection . ai in healthcare conference , stanford university, stanford, ca, united states." data-type="conference">Sahin, B. , (2025, January). AI-driven segmentation with deep learning U -Net architecture for skin cancer detection . AI in Healthcare Conference , Stanford University, Stanford, CA, United States.</li><li class="pub-item" data-text="sahin, b. , (2023, march 29). fuzzy fault tree analysis algorithm and applications in logistics industry. 4th research and innovation seminar , international maritime college oman, sohar, oman." data-type="conference">Sahin, B. , (2023, March 29). Fuzzy fault tree analysis algorithm and applications in logistics industry. 4th Research and Innovation Seminar , International Maritime College Oman, Sohar, Oman.</li><li class="pub-item" data-text="sahin, b. , (2022, march 24). quantitative vision for logistics management research. 3rd research and innovation seminar , international maritime college oman, sohar, oman." data-type="conference">Sahin, B. , (2022, March 24). Quantitative vision for logistics management research. 3rd Research and Innovation Seminar , International Maritime College Oman, Sohar, Oman.</li><li class="pub-item" data-text="sahin, b. , yazidi, a., roman, d., uddin, m. z., &amp; soylu, a. (2021, august 24 -26). on converting crisp failure possibility into probability for reliability of complex systems. in infus 2021: international conference on intelligent and fuzzy systems (istanbul, turkey)." data-type="conference">Sahin, B. , Yazidi, A., Roman, D., Uddin, M. Z., &amp; Soylu, A. (2021, August 24 -26). On converting crisp failure possibility into probability for reliability of complex systems. In INFUS 2021: International Conference on Intelligent and Fuzzy Systems (Istanbul, Turkey).</li><li class="pub-item" data-text="sahin, b. , yazidi, a., roman, d., uddin, m. z., &amp; soylu, a. (2021, august 24 -26). an analysis of data production based on the consistency of decision matrices. in infus 2021: international conference on intelligent and fuzzy systems (istanbul, turkey)." data-type="conference">Sahin, B. , Yazidi, A., Roman, D., Uddin, M. Z., &amp; Soylu, A. (2021, August 24 -26). An analysis of data production based on the consistency of decision matrices. In INFUS 2021: International Conference on Intelligent and Fuzzy Systems (Istanbul, Turkey).</li><li class="pub-item" data-text="sahin, b. , (2021, june 13). optimal ship navigation and image processing. 2nd research and innovation day , international maritime college oman, sohar, oman." data-type="conference">Sahin, B. , (2021, June 13). Optimal ship navigation and image processing. 2nd Research and Innovation Day , International Maritime College Oman, Sohar, Oman.</li><li class="pub-item" data-text="sahin, b. , uddin, m. z., &amp; soylu, a. (2020, october 5 -7). towards optimal ship navigation using image processing. in isvc 2020: 15th international symposium on visual computing (usa)." data-type="conference">Sahin, B. , Uddin, M. Z., &amp; Soylu, A. (2020, October 5 -7). Towards optimal ship navigation using image processing. In ISVC 2020: 15th International Symposium on Visual Computing (USA).</li><li class="pub-item" data-text="sahin, b. , &amp; yip, t. l. (2020, june 10 -13). analysis of root causes for maritime accidents originated from human factor. in iame 2020 conference (hong kong)." data-type="conference">Sahin, B. , &amp; Yip, T. L. (2020, June 10 -13). Analysis of root causes for maritime accidents originated from human factor. In IAME 2020 Conference (Hong Kong).</li><li class="pub-item" data-text="sahin, b. , &amp; yip, t. l. (2020, june 10 -13). technical factor in maritime accidents: an index for systematic failure analysis. in iame 2020 conference (hong kong)." data-type="conference">Sahin, B. , &amp; Yip, T. L. (2020, June 10 -13). Technical factor in maritime accidents: An index for systematic failure analysis. In IAME 2020 Conference (Hong Kong).</li><li class="pub-item" data-text="sahin, b. , &amp; yazir, d. (2017, december 7 -10). a comparative analysis of innovations in the maritime sector. in i. uluslararası türk dünyası mühendislik ve fen bilimleri kongresi (antalya, turkey), 33 -33." data-type="conference">Sahin, B. , &amp; Yazir, D. (2017, December 7 -10). A comparative analysis of innovations in the maritime sector. In I. Uluslararası Türk Dünyası Mühendislik ve Fen Bilimleri Kongresi (Antalya, Turkey), 33 -33.</li><li class="pub-item" data-text="sahin, b. , &amp; yazir, d. (2017, december 7 -10). which scale to use? an analysis for skewness of fuzzy numbers on consistency of pairwise comparison decision matrix. in i. uluslararası türk dünyası mühendislik ve fen bilimleri kongresi (antalya, turkey), 32 -32." data-type="conference">Sahin, B. , &amp; Yazir, D. (2017, December 7 -10). Which scale to use? An analysis for skewness of fuzzy numbers on consistency of pairwise comparison decision matrix. In I. Uluslararası Türk Dünyası Mühendislik ve Fen Bilimleri Kongresi (Antalya, Turkey), 32 -32.</li><li class="pub-item" data-text="sahin, b. , &amp; yazir, d. (2017, december 7 -10). on similarity, dominance and priority for judgment matrices in the presence of fuzziness. in i. uluslararası türk dünyası mühendislik ve fen bilimleri kongresi (antalya, turkey), 34 -34." data-type="conference">Sahin, B. , &amp; Yazir, D. (2017, December 7 -10). On similarity, dominance and priority for judgment matrices in the presence of fuzziness. In I. Uluslararası Türk Dünyası Mühendislik ve Fen Bilimleri Kongresi (Antalya, Turkey), 34 -34.</li><li class="pub-item" data-text="sahin, b. , &amp; yazir, d. (2016, may 24 -28). risk assessment for technology management by using improved fuzzy -ahp method. in international conference on engineering and natural sciences (icens) (sarajevo, bosnia herzegovina), 307 -307. aydın, k., &amp; sahin, b. (2016, june 2 -4). a retail location selection problem with generic fuzzy analytical hierarchy process. in 2nd annual international conference on social sciences (istanbul, turkey), 212 -225." data-type="conference">Sahin, B. , &amp; Yazir, D. (2016, May 24 -28). Risk assessment for technology management by using improved fuzzy -AHP method. In International Conference on Engineering and Natural Sciences (ICENS) (Sarajevo, Bosnia Herzegovina), 307 -307. Aydın, K., &amp; Sahin, B. (2016, June 2 -4). A retail location selection problem with generic fuzzy analytical hierarchy process. In 2nd Annual International Conference on Social Sciences (Istanbul, Turkey), 212 -225.</li><li class="pub-item" data-text="sahin, b. , senol, y. e., bulut, e., &amp; duru, o. (2014, september 30 -31). an approach for technology selection problem in maritime logistics. in lm-scm 2014: xii. international logistics and supply chain congress (istanbul, turkey)." data-type="conference">Sahin, B. , Senol, Y. E., Bulut, E., &amp; Duru, O. (2014, September 30 -31). An approach for technology selection problem in maritime logistics. In LM-SCM 2014: XII. International Logistics and Supply Chain Congress (Istanbul, Turkey).</li><li class="pub-item" data-text="sahin, b. , senol, y. e., &amp; kartal, s. e. (2014, september 30 -31). swot analysis of transportation in the arctic region. in lm-scm 2014: xii. international logistics and supply chain congress (istanbul, turkey)." data-type="conference">Sahin, B. , Senol, Y. E., &amp; Kartal, S. E. (2014, September 30 -31). SWOT analysis of transportation in the Arctic region. In LM-SCM 2014: XII. International Logistics and Supply Chain Congress (Istanbul, Turkey).</li><li class="pub-item" data-text="sahin, b. , senol, y. e., kum, s., aydogdu, v., &amp; duru, o. (2013, june 26 -28). route entry decisions for arctic navigation. in the international institute of industrial engineers (iie) conference (istanbul, turkey)." data-type="conference">Sahin, B. , Senol, Y. E., Kum, S., Aydogdu, V., &amp; Duru, O. (2013, June 26 -28). Route entry decisions for Arctic navigation. In The International Institute of Industrial Engineers (IIE) Conference (Istanbul, Turkey).</li><li class="pub-item" data-text="sahin, b. , kum, s., aksakalli, v., &amp; aydogdu, v. (2013, september 24 -26). a survey study on ice navigation research. in asia navigation conference (busan, south korea)." data-type="conference">Sahin, B. , Kum, S., Aksakalli, V., &amp; Aydogdu, V. (2013, September 24 -26). A survey study on ice navigation research. In Asia Navigation Conference (Busan, South Korea).</li><li class="pub-item" data-text="sahin, b. , bulut, e., duru, o., &amp; kum, s. (2013, august 30 -31). a novel approach for selecting navigation route in the arctic region. in international conference of the asian shipping and logistics (kobe, japan)." data-type="conference">Sahin, B. , Bulut, E., Duru, O., &amp; Kum, S. (2013, August 30 -31). A novel approach for selecting navigation route in the Arctic region. In International Conference of the Asian Shipping and Logistics (Kobe, Japan).</li><li class="pub-item" data-text="sahin, b. , &amp; senol, y. e. (2013, august 30 -31). decision analysis for route selection in icy waters. in v. international conference of the asian shipping and logistics (kobe, japan)." data-type="conference">Sahin, B. , &amp; Senol, Y. E. (2013, August 30 -31). Decision analysis for route selection in icy waters. In V. International Conference of the Asian Shipping and Logistics (Kobe, Japan).</li><li class="pub-item" data-text="sahin, b. , &amp; senol, y. e. (2013, november 11). technology venturing on instant stopping technology for the vessels. in v. national maritime congress (istanbul, turkey)." data-type="conference">Sahin, B. , &amp; Senol, Y. E. (2013, November 11). Technology venturing on instant stopping technology for the vessels. In V. National Maritime Congress (Istanbul, Turkey).</li><li class="pub-item" data-text="sahin, b. , kum, s., aydogdu, v., &amp; aksakalli, v. (2013, november 24 -25). transportation infrastructure and management for istanbul, effects of standardisation to the global economy. in tse international symposium (istanbul, turkey)." data-type="conference">Sahin, B. , Kum, S., Aydogdu, V., &amp; Aksakalli, V. (2013, November 24 -25). Transportation infrastructure and management for Istanbul, effects of standardisation to the global economy. In TSE International Symposium (Istanbul, Turkey).</li><li class="pub-item" data-text="senol, y. e., sahin, b. , duru, o., gunes, e., aydogdu, y. v., &amp; kum, s. (2013, june 24 -28). coaster fleet design and selection in the coastal maritime transport. in the international institute of industrial engineers (iie) conference (istanbul, turkey)." data-type="conference">Senol, Y. E., Sahin, B. , Duru, O., Gunes, E., Aydogdu, Y. V., &amp; Kum, S. (2013, June 24 -28). Coaster fleet design and selection in the coastal maritime transport. In The International Institute of Industrial Engineers (IIE) Conference (Istanbul, Turkey).</li><li class="pub-item" data-text="senol, y. e., sahin, b. , &amp; kum, s. (2013, september 11). coaster selection analysis for coastal transportation. in v. national maritime congress (istanbul, turkey)." data-type="conference">Senol, Y. E., Sahin, B. , &amp; Kum, S. (2013, September 11). Coaster selection analysis for coastal transportation. In V. National Maritime Congress (Istanbul, Turkey).</li></ul></div><div class="pub-group" data-cat="popular"><div class="pub-group-head"><h3>Popular Science Articles</h3><div class="muted small pub-meta">3 item(s)</div></div><ul class="pub-list"><li class="pub-item" data-text="sahin, b. (2021). the need of probabilistic risk forecasting systems for narrow waterways and canals. in robban assafina international magazine , issue 71." data-type="popular">Sahin, B. (2021). The need of probabilistic risk forecasting systems for narrow waterways and canals. In Robban Assafina International Magazine , Issue 71.</li><li class="pub-item" data-text="sahin, b. (2020). ercim news. in research and society: machine ethics (pp. 51 -52). https://ercim -news.ercim.eu/en122/special/an -automatic -anomaly -detection -system -aads- for-fully -autonomous -ships?highlight=wyjizwtpciisinnhagluil0=" data-type="popular">Sahin, B. (2020). ERCIM News. In Research and Society: Machine Ethics (pp. 51 -52). <a href="https://ercim" rel="noopener" target="_blank">https://ercim</a> -news.ercim.eu/en122/special/an -automatic -anomaly -detection -system -aads- for-fully -autonomous -ships?highlight=WyJiZWtpciIsInNhaGluIl0=</li><li class="pub-item" data-text="sahin, b. (2015). emerging maritime technologies. in the maritime economist (pp. 40 -43). https://viewer.joomag.com/the -maritime -economist -magazine -spring - 2015/0575473001427416450/p40" data-type="popular">Sahin, B. (2015). Emerging maritime technologies. In The Maritime Economist (pp. 40 -43). <a href="https://viewer.joomag.com/the" rel="noopener" target="_blank">https://viewer.joomag.com/the</a> -maritime -economist -magazine -spring - 2015/0575473001427416450/p40</li></ul></div></div></section>
+<section id="service">
+<h2>Service</h2>
+<ul class="bullets">
+<li>Organizing Committee Member, AI in Healthcare Conference, Stanford University (2025).</li>
+<li>Organizing Team Member, Entrepreneurship Olympiad, Stanford University, (2024).</li>
+<li>Academic Editor, Mathematical Problems in Engineering, (2020 -)</li>
+<li>Academic Editor, Advances in Fuzzy Systems, (2021 -)</li>
+<li>Reviewer Board, Algorithms, (2020 -)</li>
+<li>Editorial Board Member, Review of Computer Engineering Studies, International Information and Engineering Technology Association (2016 -)</li>
+<li>Organizing Committee Member, Workshop for Risk Assessment of Izmit Bay</li>
+<li>Organizing Committee Member, FUZZ -IEEE Special Session Fuzzy Logic on Technology Management</li>
+<li>Project Steering Panelist, The Scientific and Technological Research Council of Turkey (TUBITAK)</li>
+<li>Advised 100+ students and supervised 25+ capstone projects across supply chain, procurement, operations, and logistics topics.</li>
+<li>Committed to inclusive academic service and supporting diverse student populations.</li>
+</ul>
+</section>
+<section id="awards">
+<h2>Awards and Honors</h2>
+<ul class="bullets">
+<li>Certificate of Product Management, SkillUp, EdTech, 2024.</li>
+<li>Certificate of Achievement for the nomination in the global Stanford University list of the top 2% of the world most academically cited researchers in the Scopus Worldwide Database, 2023.</li>
+<li>Certificate of Appreciation for Organizing a Series of Colloquium Meetings, 2022.</li>
+<li>Certificates of Appreciation for Participating as a Speaker in 2nd, 3rd and 4th Research and Innovation Day, 2021, 2022, 2023.</li>
+<li>Fellow, The ERCIM ”Alain Bensoussan” Fellowship Programme, 2019.</li>
+<li>Scientific Publication Support Award, The Council of Higher Education (YOK), Turkey, 2013 -2020.</li>
+<li>Scholarship of Istanbul Municipal Istanbul, Turkey, 2003 -2007.</li>
+<li>Scholarship of Turkish Government Istanbul, Turkey, 2003.</li>
+</ul>
+</section>
+<section id="skills"><h2>Languages and Technical Skills</h2><div class="stack">
+<div class="card static">
+<div class="card-title">Programming &amp; Computational Tools</div>
+<div class="card-body">Python, Java, MATLAB, SQL, R (working knowledge)</div>
+</div>
+<div class="card static">
+<div class="card-title">Data &amp; Analytics Tools</div>
+<div class="card-body">Tableau, LaTeX, MS Excel (advanced), MS Visio, Notion, Power BI, Jupyter, Git/GitHub</div>
+</div>
+<div class="card static">
+<div class="card-title">Methods &amp; Analytical Expertise</div>
+<div class="card-body">Data Science, Machine Learning, Predictive Analytics, Big Data Processing, Optimization, Simulation, Quantitative Modeling, Decision Analysis, Fuzzy Logic, Multi -Criteria Decision Making (MCDM)</div>
+</div>
+<div class="card static">
+<div class="card-title">Supply Chain &amp; Operations Expertise</div>
+<div class="card-body">Supply Chain Management, Procurement &amp; Purchasing, Supplier Evaluation, Sourcing Analytics, Logistics &amp; Transportation, Inventory Control, Demand Forecasting, Operations Management, Risk &amp; Resilience Analysis</div>
+</div>
+<div class="card static">
+<div class="card-title">Professional &amp; Leadership Skills</div>
+<div class="card-body">Project Management, Digital Transformation, Research Design, Curriculum Development, Technical Communication, Cross -Functional Collaboration, Academic Leadership</div>
+</div>
+</div></section>
+<section class="section" id="contact">
+<div class="section-head">
+<h2>Contact</h2>
+<div class="kicker">Send a message</div>
+</div>
+<div class="contact-card">
+<form action="https://docs.google.com/forms/d/e/1FAIpQLSdhZVLtzdbOjtczPxZJU2E53yjLIAu_mlC7VvWuMHbhRTtuYA/formResponse" id="contactForm" method="POST" target="cf_iframe" novalidate="">
+<div class="form-grid">
+<div class="field">
+<label for="cf_name">Name</label>
+<input autocomplete="name" id="cf_name" name="entry.539694171" placeholder="Your name" required="" type="text"/>
+</div>
+<div class="field">
+<label for="cf_email">Email</label>
+<input autocomplete="email" id="cf_email" name="entry.1392783076" placeholder="you@email.com" required="" type="email"/>
+</div>
+<div class="field full">
+<label for="cf_message">Message</label>
+<textarea id="cf_message" name="entry.2077893616" placeholder="Write your message..." required=""></textarea>
+</div>
+</div>
+<!-- Optional anti-bot honeypot (keep hidden) -->
+<div class="form-actions">
+<button class="btn" id="cf_submit" type="submit">Send message</button>
+<span aria-live="polite" class="form-status" id="cf_status"></span>
+<span class="form-note">Messages are saved to a Google Sheet.</span>
+</div>
+</form>
+<iframe id="cf_iframe" name="cf_iframe" style="display:none" title="Contact form submit target"></iframe>
+<!-- Configure: replace 1FAIpQLSdhZVLtzdbOjtczPxZJU2E53yjLIAu_mlC7VvWuMHbhRTtuYA and the three ENTRY_IDs (Google Forms field entry IDs). -->
+</div>
+</section>
+</main>
+<footer>
+<div class="container">
+    Last updated: 2025-12-13.
+  </div>
+</footer>
+<script>
+(function(){
+
+
+
+  // ---------- Sticky nav height (multi-row on mobile) ----------
+  const nav = document.querySelector('nav');
+  const navLinks = [...document.querySelectorAll('.nav-inner a')].filter(a => (a.getAttribute('href')||'').startsWith('#'));
+
+  function setNavHeightVar(){
+    if(!nav) return 0;
+    const h = Math.ceil(nav.getBoundingClientRect().height);
+    document.documentElement.style.setProperty('--nav-h', h + 'px');
+    return h;
+  }
+
+  function scrollToId(id, behavior='smooth'){
+    const navH = setNavHeightVar();
+    // "Home" goes to the top of the page (hero visible)
+    if(id === 'top' || id === ''){
+      // iOS Safari sometimes stops a few pixels short; snap a couple of times.
+      window.scrollTo({top:0,left:0,behavior});
+      if(behavior !== 'smooth'){
+        document.scrollingElement && (document.scrollingElement.scrollTop = 0);
+      }
+      setTimeout(()=>window.scrollTo({top:0,left:0,behavior:'auto'}), 60);
+      setTimeout(()=>window.scrollTo({top:0,left:0,behavior:'auto'}), 180);
+      return;
+    }
+    const el = document.getElementById(id);
+    if(!el) return;
+    const y = el.getBoundingClientRect().top + window.pageYOffset - navH - 14;
+    window.scrollTo({top: Math.max(0, y), left:0, behavior});
+  }
+
+  // Intercept nav clicks so headings are never hidden behind the sticky nav
+  navLinks.forEach(a=>{
+    a.addEventListener('click', (e)=>{
+      e.preventDefault();
+      const href = a.getAttribute('href') || '#';
+      const id = href.replace('#','');
+      history.pushState(null,'',href);
+      scrollToId(id, 'smooth');
+      setTimeout(updateActive, 250);
+    });
+  });
+
+  // ---------- Active nav highlight ----------
+  const targets = navLinks
+    .map(a => document.querySelector(a.getAttribute('href')))
+    .filter(Boolean);
+
+  
+  function fitNavLabels(){
+    const isNarrow = window.matchMedia('(max-width: 980px)').matches;
+    navLinks.forEach(a=>{
+      a.classList.remove('wrap','shrink');
+      if(!isNarrow) return;
+      const text = (a.textContent || '').trim();
+      const over = (a.scrollWidth - a.clientWidth) > 2;
+      if(!over) return;
+
+      // Prefer wrapping only when there is a natural break opportunity (spaces / &).
+      if (/[\s&]/.test(text)) {
+        a.classList.add('wrap');
+      } else {
+        a.classList.add('shrink');
+      }
+
+      // If it's still overflowing (active pill padding can trigger this), shrink as a fallback.
+      requestAnimationFrame(() => {
+        const over2 = (a.scrollWidth - a.clientWidth) > 2;
+        if (over2) a.classList.add('shrink');
+      });
+    });
+    setNavHeightVar();
+  }
+
+function setActive(id){
+    navLinks.forEach(a=>{
+      a.classList.toggle('active', a.getAttribute('href') === ('#' + id));
+    });
+    fitNavLabels();
+}
+
+  function updateActive(){
+    if(!targets.length) return;
+    const navH = setNavHeightVar();
+    const y = window.scrollY + navH + 22;
+
+    // If we're at the very bottom, force-highlight the last section (e.g., Skills)
+    const atBottom = (window.innerHeight + window.scrollY) >= (document.documentElement.scrollHeight - 2);
+    if(atBottom){
+      setActive((targets[targets.length-1].id)||'skills');
+      return;
+    }
+
+    let current = targets[0].id || 'about';
+    for(const el of targets){
+      const top = el.getBoundingClientRect().top + window.scrollY;
+      if(top <= y) current = el.id;
+    }
+    setActive(current);
+  }
+
+  fitNavLabels();
+
+  window.addEventListener('scroll', updateActive, {passive:true});
+  window.addEventListener('resize', ()=>{fitNavLabels(); updateActive();});
+
+  // Correct initial position when loading with a hash (or after back/forward)
+  function initFromHash(){
+    setNavHeightVar();
+    const id = (location.hash || '').replace('#','');
+    if(id) scrollToId(id, 'auto');
+    updateActive();
+  }
+
+  window.addEventListener('load', ()=>{
+    initFromHash();
+    setTimeout(initFromHash, 250);
+  });
+  window.addEventListener('popstate', initFromHash);
+
+  // ---------- Publications: filter + search (single view, others hidden) ----------
+  const search = document.getElementById('pubSearch');
+  const pills = [...document.querySelectorAll('#publications .pill')];
+  const pubGroups = [...document.querySelectorAll('#publications .pub-group')];
+  const pubItems = [...document.querySelectorAll('#publications .pub-item')];
+  const pubCount = document.getElementById('pubCount');
+
+  let typeFilter = 'all';
+
+  function applyPublications(){
+    const q = (search?.value || '').trim().toLowerCase();
+    let totalVisible = 0;
+
+    // Item-level filter
+    pubItems.forEach(li=>{
+      const t = li.getAttribute('data-type') || '';
+      const txt = li.getAttribute('data-text') || '';
+      const typeOk = (typeFilter === 'all') || (t === typeFilter);
+      const qOk = (!q) || txt.includes(q);
+      const show = typeOk && qOk;
+      li.style.display = show ? '' : 'none';
+    });
+
+    // Group visibility + per-group counts
+    pubGroups.forEach(g=>{
+      const cat = g.getAttribute('data-cat') || '';
+      const groupTypeOk = (typeFilter === 'all') || (cat === typeFilter);
+      let groupVisible = 0;
+      g.querySelectorAll('.pub-item').forEach(li=>{
+        if(li.style.display !== 'none') groupVisible++;
+      });
+
+      const meta = g.querySelector('.pub-meta');
+      if(meta) meta.textContent = groupVisible + ' item(s)';
+
+      const showGroup = groupTypeOk && groupVisible > 0;
+      g.style.display = showGroup ? '' : 'none';
+
+      if(showGroup) totalVisible += groupVisible;
+    });
+
+    if(pubCount){
+      pubCount.textContent = totalVisible + ' matching item(s)';
+    }
+  }
+
+  if(search) search.addEventListener('input', applyPublications);
+
+  pills.forEach(p=>{
+    p.addEventListener('click', ()=>{
+      pills.forEach(x=>{
+        x.classList.remove('active');
+        x.setAttribute('aria-selected', 'false');
+      });
+      p.classList.add('active');
+      p.setAttribute('aria-selected', 'true');
+      typeFilter = p.getAttribute('data-filter') || 'all';
+      applyPublications();
+
+      // After switching filters:
+      // - If a specific category is selected, scroll so that category heading is visible right under the sticky controls.
+      // - If "All" is selected, keep the Publications sticky controls visible.
+      requestAnimationFrame(()=>{
+        const navH = setNavHeightVar();
+        const sticky = document.getElementById('pubSticky');
+        const stickyH = sticky ? Math.ceil(sticky.getBoundingClientRect().height) : 0;
+
+        if(typeFilter && typeFilter !== 'all'){
+          const group = document.querySelector(`#publications .pub-group[data-cat="${typeFilter}"]`);
+          if(group && group.style.display !== 'none'){
+            const head = group.querySelector('.pub-group-head') || group;
+            const y = head.getBoundingClientRect().top + window.pageYOffset - navH - stickyH - 12;
+            window.scrollTo({top: Math.max(0,y), behavior:'smooth'});
+            return;
+          }
+        }
+
+        // "All" should always bring the user to the start of the Publications section
+        // (using the section's document position, not the sticky element's current screen position).
+        const pubSection = document.getElementById('publications');
+        if(pubSection){
+          const y = pubSection.getBoundingClientRect().top + window.pageYOffset - navH - 10;
+          window.scrollTo({top: Math.max(0,y), behavior:'smooth'});
+        } else if(sticky){
+          const y = sticky.getBoundingClientRect().top + window.pageYOffset - navH - 10;
+          window.scrollTo({top: Math.max(0,y), behavior:'smooth'});
+        }
+      });
+});
+  });
+
+  applyPublications();
+
+    // ---------- Contact form (Google Forms → Google Sheets) ----------
+  const contactForm = document.getElementById('contactForm');
+  if(contactForm){
+    const statusEl = document.getElementById('cf_status');
+    const submitBtn = document.getElementById('cf_submit');
+    const iframe = document.getElementById('cf_iframe');
+    let submitted = false;
+
+    function setStatus(msg){
+      if(statusEl) statusEl.textContent = msg || '';
+    }
+
+    function setBusy(isBusy){
+      if(submitBtn) submitBtn.disabled = !!isBusy;
+      if(submitBtn) submitBtn.classList.toggle('busy', !!isBusy);
+    }
+
+    contactForm.addEventListener('submit', (e)=>{
+      // HTML5 validation
+      if(!contactForm.checkValidity()){
+        e.preventDefault();
+        contactForm.reportValidity();
+        return;
+      }
+
+      // Honeypot (basic bot protection)
+      const hp = contactForm.querySelector('input[name="website"]');
+      if(hp && hp.value.trim() !== ''){
+        e.preventDefault();
+        return;
+      }
+
+      submitted = true;
+      setBusy(true);
+      setStatus('Sending…');
+
+      // Fallback: release UI even if the iframe doesn't fire "load"
+      window.setTimeout(()=>{
+        if(!submitted) return;
+        submitted = false;
+        setBusy(false);
+        setStatus('Message sent. Thank you!');
+        contactForm.reset();
+      }, 6000);
+      // allow normal submit into hidden iframe
+    });
+
+    if(iframe){
+      iframe.addEventListener('load', ()=>{
+        if(!submitted) return;
+        submitted = false;
+        setBusy(false);
+        setStatus('Message sent. Thank you!');
+        contactForm.reset();
+      });
+    }
+  }
+})();
+</script>
+</body>
+</html>
